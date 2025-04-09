@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Kalkulator</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/projekt4/assets/css/main.css"/>
+	<style>
+		body {
+            color: black;
+        }
+
+        #registrationform {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #registrationform input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: black;
+            background-color: #fff;
+        }
+
+        #registrationform input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .button.primary {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .button.primary:hover {
+            background-color: #0056b3;
+        }
+
+        .scroll-to-calc {
+            margin-top: 20px;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #main {
+            margin-top: 30px;
+        }
+
+        #registration h2 {
+            font-size: 32px;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+	</style>
+</head>
+<body class="landing is-preload">
+<div id="page-wrapper">
+
+	<!-- Header -->
+	<header id="header" class="alt">
+		<h1>Alpha</h1>
+		<nav id="nav">
+			<ul>
+				<li>Home</li>
+				<li>
+					<a href="#" class="icon solid fa-angle-down">Layouts</a>
+					<ul>
+						<li><a href="generic.html">Generic</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</li>
+				<li><a href="#" class="button">Sign Up</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Banner -->
+	<section id="banner">
+		<h2>Witamy</h2>
+		<section id="registration">
+			<h2>Rejestracja</h2>
+			<form id="registrationform">
+				<input type="text" name="name" id="name" placeholder="Imię" required/>
+				<input type="password" name="hasło" id="password" placeholder="Hasło" required/>
+				<button type="submit" class="button primary">Zaloguj się</button>
+			</form>
+		</section>
+		<!--        <div class="scroll-to-calc" onclick="scrollToCalculator()">Przejdź do kalkulatora</div>-->
+	</section>
+
+	<!-- Main -->
+	<section id="main" class="container">
+		<section class="box special">
+			<header class="major">
+				<h2>Kalkulator</h2>
+			</header>
+			<!-- Форма калькулятора -->
+			<form action="{$app_url}/app/calculator/calculator.php" method="post">
+				<div class="row gtr-50 gtr-uniform">
+					<div class="col-12">
+						<input type="text" name="kwota" id="id_kwota" placeholder="Kwota" required />
+					</div>
+					<div class="col-12">
+						<input type="text" name="okres" id="id_okres" placeholder="Okres" required />
+					</div>
+					<div class="col-12">
+						<input type="text" name="procent" id="id_procent" placeholder="Procent" required />
+					</div>
+					<div class="col-12">
+						<input type="submit" value="Oblicz" class="button primary" />
+					</div>
+				</div>
+			</form>
+		</section>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="copyright">
+			<li>&copy; Wszystkie prawa zastrzeżone.</li>
+		</ul>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/jquery.dropotron.min.js"></script>
+<script src="../../assets/js/jquerys.scrollex.min.js"></script>
+<script src="../../assets/js/browser.min.js"></script>
+<script src="../../assets/js/breakpoints.min.js"></script>
+<script src="../../assets/js/util.js"></script>
+<script src="../../assets/js/main.js"></script>
+<script>
+	function scrollToCalculator() {
+    document.getElementById("main").scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
