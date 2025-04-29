@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Kredytowy</title>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="{$app_url}/assets/css/main.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Светло-серый фон */
+            font-family: Arial, sans-serif;
+        }
+        #page-wrapper {
+            width: 100%;
+        }
+
+        #header {
+            background: #fff; /* Белый фон для шапки */
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #header h1 {
+            margin: 0;
+        }
+
+        #nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
+        #nav ul li {
+            display: inline-block;
+        }
+
+        #registration {
+            margin-top: 80px;
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: center; /* центрирование горизонтально */
+        }
+        #registrationform {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        #calculator {
+            display: none;
+            margin-top: 50px;
+            margin-bottom: 80px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #footer {
+            background: none; /* Убираем тёмную полосу внизу */
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="page-wrapper">
+
+    <header id="header">
+        <nav id="nav">
+            <ul>
+                <li><a href="#" onclick="backToHome(); return false;">Home</a></li>
+                <li><a href="{$app_url}/signup" class="button">Sign Up</a></li>
+            </ul>
+        </nav>
+
+        <h1>{$site_name|default:'Kalkulator Kredytowy'}</h1>
+    </header>
+
+    <section id="registration">
+        <form id="registrationform" onsubmit="event.preventDefault(); showCalculator();">
+            <h2>Rejestracja</h2>
+            <input type="text" name="name" id="name" placeholder="Imię" required />
+            <input type="password" name="password" id="password" placeholder="Hasło" required />
+            <button type="submit" class="button primary">Zaloguj się</button>
+        </form>
+    </section>
+
+    <section id="calculator">
+        <h2>Kalkulator Kredytowy</h2>
+        <form action="{$app_url}/app/CalcCtrl.php" method="post">
+            <div class="form-field">
+                <label for="id_kwota">Kwota:</label>
+                <input type="text" name="kwota" id="id_kwota" required />
+            </div>
+            <div class="form-field">
+                <label for="id_okres">Okres (lata):</label>
+                <input type="text" name="okres" id="id_okres" required />
+            </div>
+            <div class="form-field">
+                <label for="id_procent">Procent:</label>
+                <input type="text" name="procent" id="id_procent" required />
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Oblicz" class="button primary" />
+            </div>
+        </form>
+    </section>
+
+    <footer id="footer">
+        <!-- Footer content can go here -->
+    </footer>
+</div>
+
+<!-- Подключение JavaScript -->
+<script src="{$app_url}/assets/js/jquery.min.js"></script>
+<script src="{$app_url}/assets/js/jquery.dropotron.min.js"></script>
+<script src="{$app_url}/assets/js/jquery.scrollex.min.js"></script>
+<script src="{$app_url}/assets/js/browser.min.js"></script>
+<script src="{$app_url}/assets/js/breakpoints.min.js"></script>
+<script src="{$app_url}/assets/js/util.js"></script>
+<script src="{$app_url}/assets/js/main.js"></script>
+
+{literal}
+<script>
+    function showCalculator() {
+        var calcBlock = document.getElementById('calculator');
+        calcBlock.style.display = 'block';
+        calcBlock.scrollIntoView({ behavior: 'smooth' });
+    }
+    function backToHome() {
+        document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('calculator').style.display = 'none';
+    }
+</script>
+{/literal}
+
+</body>
+</html>
